@@ -9,7 +9,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 from uuid import uuid4
 from django.core.mail import send_mail
 from django.contrib.auth.tokens import default_token_generator
-from rest_framework.reverse import reverse
 
 
 # Создаем класс менеджера пользователей
