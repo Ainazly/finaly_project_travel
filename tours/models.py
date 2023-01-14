@@ -26,7 +26,7 @@ class Types(models.Model):
 
 class Tour(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='tours')
-    types = models.ForeignKey(Types, on_delete=models.CASCADE)
+    types = models.ForeignKey(Types, on_delete=models.CASCADE, related_name='tours')
     image = models.ImageField()
     title = models.CharField(max_length=100, blank=False, null=False)
     body = models.TextField()

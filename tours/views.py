@@ -1,10 +1,8 @@
-from rest_framework.decorators import action
-from rest_framework.generics import ListAPIView, RetrieveAPIView
-from rest_framework.response import Response
-
-from .serializers import TourSerializer, CategorySerializer
-from .models import Tour, Category
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAdminUser
+from rest_framework.generics import (ListAPIView, RetrieveAPIView, CreateAPIView,
+                                     )
+from .serializers import TourSerializer, CategorySerializer, TypesSerializer, CreateTourSerializer
+from .models import Tour, Category, Types
 
 
 # Для просмотра всех туров
@@ -21,11 +19,17 @@ class TourDetailView(RetrieveAPIView):
     permission_classes = [AllowAny]
 
 
-#
+# для просмотра тура по категориям сложности
 class CategoryDetailView(RetrieveAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [AllowAny]
 
+
+# для просмотра туров по типам(однодневный и тд)
+class TypesDetailView(RetrieveAPIView):
+    queryset = Types.objects.all()
+    serializer_class = TypesSerializer
+    permission_classes = [AllowAny]
 
 
